@@ -1,0 +1,21 @@
+@hostname = localhost
+@port = 3333
+@host = {{hostname}}:{{port}}
+@contentType = application/json
+
+# @name createTrip
+POST http://{{host}}/trips
+Content-Type: {{contentType}}
+
+{
+  "destination": "Toronto",
+  "startsAt": "2025-01-01",
+  "endsAt": "2026-01-01",
+  "ownerName": "Guilherme Crozariol",
+  "ownerEmail": "guicrozariol@gmail.com"
+}
+
+###
+
+# @name getTrips
+GET http://{{host}}/trips

@@ -1,23 +1,24 @@
-import fastify from "fastify";
-import { prisma } from "./lib/prisma";
+import fastify from 'fastify'
+import {
+  serializerCompiler,
+  validatorCompiler,
+} from 'fastify-type-provider-zod'
+
+import { prisma } from './lib/prisma'
+import { createTrip } from './routes/create-trip'
 
 const app = fastify()
 
-app.post('/trips', async (req, res) => {
-  const { destination } = req.body as any
+app.setValidatorCompiler(validatorCompiler)
+app.setSerializerCompiler(serializerCompiler)
 
-  return await prisma.trips.create({
-    data: {
-      destination
-    }
-  })
-})
+app.register(createTrip)
 
-app.get('/trips', async (req, res) => {
+app.get('/trips', async () => {
   const result = await prisma.trips.findMany()
 
   return {
-    trips: result
+    trips: result,
   }
 })
 
