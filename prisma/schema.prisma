@@ -16,6 +16,8 @@ model Trip {
   createdAt   DateTime @default(now())
 
   participants Participant[]
+  activities   Activity[]
+  links        Link[]
 
   @@map("trips")
 }
@@ -32,4 +34,25 @@ model Participant {
   tripId String
 
   @@map("participants")
+}
+
+model Activity {
+  id String @id @default(uuid())
+
+  title    String
+  occursAt DateTime
+
+  trip   Trip   @relation(fields: [tripId], references: [id])
+  tripId String
+
+  @@map("activities")
+}
+
+model Link {
+  id String @id @default(uuid())
+
+  trip   Trip   @relation(fields: [tripId], references: [id])
+  tripId String
+
+  @@map("links")
 }
