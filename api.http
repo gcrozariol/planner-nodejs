@@ -30,4 +30,9 @@ Content-Type: {{contentType}}
 ###
 
 # @name confirmTrip
-GET http://{{host}}/trips/e982818e-2b92-488f-985c-5fb8ab43eccb/confirm
+GET http://{{host}}/trips/a6639f6e-a685-40c2-afa5-6b200fd82a1d/confirm
+
+###
+
+# @name confirmParticipant
+GET http://{{host}}/participants/bbda33d3-3b12-423a-900a-86b710700eb0/confirm

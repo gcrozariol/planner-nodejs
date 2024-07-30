@@ -6,6 +6,7 @@ import {
 } from 'fastify-type-provider-zod'
 
 import { errorHandler } from './error-handler'
+import { confirmParticipant } from './routes/confirm-participant'
 import { confirmTrip } from './routes/confirm-trip'
 import { createTrip } from './routes/create-trip'
 
@@ -22,6 +23,7 @@ app.setErrorHandler(errorHandler)
 
 app.register(createTrip)
 app.register(confirmTrip)
+app.register(confirmParticipant)
 
 app.listen({ port: 3333 }).then(() => {
   console.log('🚀 Server running on port 3333.')
