@@ -1,4 +1,5 @@
 import dayjs from 'dayjs'
+import localizedFormat from 'dayjs/plugin/localizedFormat'
 import { FastifyInstance } from 'fastify'
 import { ZodTypeProvider } from 'fastify-type-provider-zod'
 import nodemailer from 'nodemailer'
@@ -6,6 +7,8 @@ import { z } from 'zod'
 
 import { getMailClient } from '../lib/mail'
 import { prisma } from '../lib/prisma'
+
+dayjs.extend(localizedFormat)
 
 export async function createTrip(app: FastifyInstance) {
   app.withTypeProvider<ZodTypeProvider>().post(
@@ -68,8 +71,7 @@ export async function createTrip(app: FastifyInstance) {
       const formattedStartDate = dayjs(startsAt).format('LL')
       const formattedEndDate = dayjs(endsAt).format('LL')
 
-      const confirmationLink = ''
-      // const confirmationLink = `${env.API_BASE_URL}/trips/${trip.id}/confirm`
+      const confirmationLink = `localhost:3333/trips/${trip.id}/confirm`
 
       const mail = await getMailClient()
 

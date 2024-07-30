@@ -6,6 +6,7 @@ import {
 } from 'fastify-type-provider-zod'
 
 import { errorHandler } from './error-handler'
+import { confirmTrip } from './routes/confirm-trip'
 import { createTrip } from './routes/create-trip'
 
 const app = fastify()
@@ -20,6 +21,7 @@ app.setSerializerCompiler(serializerCompiler)
 app.setErrorHandler(errorHandler)
 
 app.register(createTrip)
+app.register(confirmTrip)
 
 app.listen({ port: 3333 }).then(() => {
   console.log('🚀 Server running on port 3333.')

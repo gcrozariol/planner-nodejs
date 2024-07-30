@@ -12,7 +12,19 @@ Content-Type: {{contentType}}
   "startsAt": "2025-01-01",
   "endsAt": "2026-01-01",
   "ownerName": "Guilherme Crozariol",
-  "ownerEmail": "guicrozariol@gmail.com"
+  "ownerEmail": "guicrozariol@gmail.com",
+  "emailsToInvite": [
+    "john.doe@example.com",
+    "jane.smith@example.net",
+    "sam.wilson@example.org",
+    "linda.brown@example.edu",
+    "michael.jones@example.co",
+    "emily.davis@example.io",
+    "chris.miller@example.biz",
+    "patricia.garcia@example.info",
+    "daniel.moore@example.tech",
+    "sarah.lee@example.dev"
+  ]
 }
 
 ###
