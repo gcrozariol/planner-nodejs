@@ -29,5 +29,5 @@ Content-Type: {{contentType}}
 
 ###
 
-# @name getTrips
-GET http://{{host}}/trips
+# @name confirmTrip
+GET http://{{host}}/trips/e982818e-2b92-488f-985c-5fb8ab43eccb/confirm

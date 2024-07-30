@@ -1,14 +1,11 @@
-import dayjs from 'dayjs'
-import localizedFormat from 'dayjs/plugin/localizedFormat'
 import { FastifyInstance } from 'fastify'
 import { ZodTypeProvider } from 'fastify-type-provider-zod'
 import nodemailer from 'nodemailer'
 import { z } from 'zod'
 
+import { dayjs } from '../lib/dayjs'
 import { getMailClient } from '../lib/mail'
 import { prisma } from '../lib/prisma'
-
-dayjs.extend(localizedFormat)
 
 export async function createTrip(app: FastifyInstance) {
   app.withTypeProvider<ZodTypeProvider>().post(
@@ -87,16 +84,16 @@ export async function createTrip(app: FastifyInstance) {
         subject: `Confirm your trip to ${destination}`,
         html: `
           <div style="font-family: sans-serif; font-size: 16px; line-height: 1.6;">
-          <p>You requested a trip to <strong>${destination}</strong> from <strong>${formattedStartDate}</strong> to <strong>${formattedEndDate}</strong>.</p>
-          <p></p>
-          <p>To confirm your trip, click the link below:</p>
-          <p></p>
-          <p>
-            <a href="${confirmationLink}">Confirm trip</a>
-          </p>
-          <p></p>
-          <p>If you don't know what this email is about, just ignore this email.</p>
-        </div>
+            <p>You requested a trip to <strong>${destination}</strong> from <strong>${formattedStartDate}</strong> to <strong>${formattedEndDate}</strong>.</p>
+            <p></p>
+            <p>To confirm your trip, click the link below:</p>
+            <p></p>
+            <p>
+              <a href="${confirmationLink}">Confirm trip</a>
+            </p>
+            <p></p>
+            <p>If you don't know what this email is about, just ignore this email.</p>
+          </div>
         `.trim(),
       })
 
