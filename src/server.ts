@@ -10,6 +10,7 @@ import { errorHandler } from './error-handler'
 import { confirmParticipant } from './routes/confirm-participant'
 import { confirmTrip } from './routes/confirm-trip'
 import { createActivity } from './routes/create-activity'
+import { createInvite } from './routes/create-invite'
 import { createLink } from './routes/create-link'
 import { createTrip } from './routes/create-trip'
 import { getActivities } from './routes/get-activities'
@@ -30,6 +31,7 @@ app.setErrorHandler(errorHandler)
 app.register(confirmParticipant)
 app.register(confirmTrip)
 app.register(createActivity)
+app.register(createInvite)
 app.register(createLink)
 app.register(createTrip)
 app.register(getActivities)

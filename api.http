@@ -81,3 +81,13 @@ Content-Type: {{contentType}}
 # @name getParticipants
 GET http://{{host}}/trips/{{tripId}}/participants
 Content-Type: {{contentType}}
+
+###
+
+# @name createInvite
+POST http://{{host}}/trips/{{tripId}}/invites
+Content-Type: {{contentType}}
+
+{
+  "email": "guicrozariol@gmail.com"
+}
