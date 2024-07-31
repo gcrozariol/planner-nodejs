@@ -58,3 +58,14 @@ Content-Type: {{contentType}}
 # @name getActivities
 GET http://{{host}}/trips/{{tripId}}/activities
 Content-Type: {{contentType}}
+
+###
+
+# @name createLink
+POST http://{{host}}/trips/{{tripId}}/links
+Content-Type: {{contentType}}
+
+{
+  "title": "CN Tower",
+  "url": "https://google.com/"
+}

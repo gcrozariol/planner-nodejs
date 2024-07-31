@@ -6,9 +6,11 @@ import {
 } from 'fastify-type-provider-zod'
 
 import { errorHandler } from './error-handler'
+
 import { confirmParticipant } from './routes/confirm-participant'
 import { confirmTrip } from './routes/confirm-trip'
 import { createActivity } from './routes/create-activity'
+import { createLink } from './routes/create-link'
 import { createTrip } from './routes/create-trip'
 import { getActivities } from './routes/get-activities'
 
@@ -23,10 +25,11 @@ app.setSerializerCompiler(serializerCompiler)
 
 app.setErrorHandler(errorHandler)
 
-app.register(createTrip)
-app.register(confirmTrip)
 app.register(confirmParticipant)
+app.register(confirmTrip)
 app.register(createActivity)
+app.register(createLink)
+app.register(createTrip)
 app.register(getActivities)
 
 app.listen({ port: 3333 }).then(() => {
