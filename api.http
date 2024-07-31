@@ -75,3 +75,9 @@ Content-Type: {{contentType}}
 # @name getLinks
 GET http://{{host}}/trips/{{tripId}}/links
 Content-Type: {{contentType}}
+
+###
+
+# @name getParticipants
+GET http://{{host}}/trips/{{tripId}}/participants
+Content-Type: {{contentType}}

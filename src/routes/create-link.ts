@@ -39,7 +39,9 @@ export async function createLink(app: FastifyInstance) {
         },
       })
 
-      return { linkId: link.id }
+      return {
+        linkId: link.id,
+      }
     },
   )
 }
