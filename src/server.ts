@@ -8,6 +8,7 @@ import {
 import { errorHandler } from './error-handler'
 import { confirmParticipant } from './routes/confirm-participant'
 import { confirmTrip } from './routes/confirm-trip'
+import { createActivity } from './routes/create-activity'
 import { createTrip } from './routes/create-trip'
 
 const app = fastify()
@@ -24,6 +25,7 @@ app.setErrorHandler(errorHandler)
 app.register(createTrip)
 app.register(confirmTrip)
 app.register(confirmParticipant)
+app.register(createActivity)
 
 app.listen({ port: 3333 }).then(() => {
   console.log('🚀 Server running on port 3333.')

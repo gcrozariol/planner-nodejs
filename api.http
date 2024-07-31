@@ -3,6 +3,9 @@
 @host = {{hostname}}:{{port}}
 @contentType = application/json
 
+@tripId = {{createTrip.response.body.tripId}}
+@participantId = 740ef913-1994-4855-84f9-b641082b7cd0
+
 # @name createTrip
 POST http://{{host}}/trips
 Content-Type: {{contentType}}
@@ -30,9 +33,21 @@ Content-Type: {{contentType}}
 ###
 
 # @name confirmTrip
-GET http://{{host}}/trips/a6639f6e-a685-40c2-afa5-6b200fd82a1d/confirm
+GET http://{{host}}/trips/{{tripId}}/confirm
+Content-Type: {{contentType}}
 
 ###
 
 # @name confirmParticipant
-GET http://{{host}}/participants/bbda33d3-3b12-423a-900a-86b710700eb0/confirm
+GET http://{{host}}/participants/{{participantId}}/confirm
+Content-Type: {{contentType}}
+
+###
+
+# @name createActivity
+POST http://{{host}}/trips/41f5bd30-5eab-4e35-ab85-8996893eb1e1/activities
+Content-Type: {{contentType}}
+
+{
+  "title": "im here"
+}
