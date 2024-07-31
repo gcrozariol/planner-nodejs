@@ -1,4 +1,5 @@
 import { ClientError } from '@/errors/client-error'
+import { dayjs } from '@/lib/dayjs'
 import { prisma } from '@/lib/prisma'
 
 import type { FastifyInstance } from 'fastify'
@@ -23,7 +24,11 @@ export async function getActivities(app: FastifyInstance) {
           id: tripId,
         },
         include: {
-          activities: true,
+          activities: {
+            orderBy: {
+              occursAt: 'asc',
+            },
+          },
         },
       })
 
@@ -31,8 +36,26 @@ export async function getActivities(app: FastifyInstance) {
         throw new ClientError('Trip not found')
       }
 
+      const differenceInDaysBetweenTripStartAndEnd = dayjs(trip.endsAt).diff(
+        trip.startsAt,
+        'days',
+      )
+
+      const activities = Array.from({
+        length: differenceInDaysBetweenTripStartAndEnd + 1,
+      }).map((_, i) => {
+        const date = dayjs(trip.startsAt).add(i, 'days')
+
+        return {
+          date: date.toDate(),
+          activities: trip.activities.filter((activity) => {
+            return dayjs(activity.occursAt).isSame(date, 'day')
+          }),
+        }
+      })
+
       return {
-        activities: trip.activities,
+        activities,
       }
     },
   )
