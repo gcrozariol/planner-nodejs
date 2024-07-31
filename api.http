@@ -69,3 +69,9 @@ Content-Type: {{contentType}}
   "title": "CN Tower",
   "url": "https://google.com/"
 }
+
+###
+
+# @name getLinks
+GET http://{{host}}/trips/{{tripId}}/links
+Content-Type: {{contentType}}
