@@ -45,9 +45,16 @@ Content-Type: {{contentType}}
 ###
 
 # @name createActivity
-POST http://{{host}}/trips/41f5bd30-5eab-4e35-ab85-8996893eb1e1/activities
+POST http://{{host}}/trips/{{tripId}}/activities
 Content-Type: {{contentType}}
 
 {
-  "title": "im here"
+  "title": "CN Tower",
+  "occursAt": "2025-01-02"
 }
+
+###
+
+# @name getActivities
+GET http://{{host}}/trips/{{tripId}}/activities
+Content-Type: {{contentType}}
