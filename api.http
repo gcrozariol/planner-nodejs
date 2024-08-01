@@ -4,7 +4,7 @@
 @contentType = application/json
 
 @tripId = {{createTrip.response.body.tripId}}
-@participantId = 740ef913-1994-4855-84f9-b641082b7cd0
+@participantId = 8dd3a082-ea85-44ee-8bf8-d4220a4c15bd
 
 # @name createTrip
 POST http://{{host}}/trips
@@ -74,6 +74,12 @@ Content-Type: {{contentType}}
 
 # @name getLinks
 GET http://{{host}}/trips/{{tripId}}/links
+Content-Type: {{contentType}}
+
+###
+
+# @name getParticipant
+GET http://{{host}}/participants/{{participantId}}
 Content-Type: {{contentType}}
 
 ###
