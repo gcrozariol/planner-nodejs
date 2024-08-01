@@ -103,3 +103,9 @@ Content-Type: {{contentType}}
   "startsAt": "2025-01-01",
   "endsAt": "2026-01-01"
 }
+
+###
+
+# @name getTripDetails
+GET http://{{host}}/trips/{{tripId}}
+Content-Type: {{contentType}}
