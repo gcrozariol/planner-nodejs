@@ -91,3 +91,15 @@ Content-Type: {{contentType}}
 {
   "email": "guicrozariol@gmail.com"
 }
+
+###
+
+# @name updateTrip
+PUT http://{{host}}/trips/{{tripId}}
+Content-Type: {{contentType}}
+
+{
+  "destination": "Toronto",
+  "startsAt": "2025-01-01",
+  "endsAt": "2026-01-01"
+}
