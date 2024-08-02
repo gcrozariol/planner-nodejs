@@ -1,0 +1,117 @@
+@hostname = localhost
+@port = 3333
+@host = {{hostname}}:{{port}}
+@contentType = application/json
+
+@tripId = {{createTrip.response.body.tripId}}
+@participantId = 8dd3a082-ea85-44ee-8bf8-d4220a4c15bd
+
+# @name createTrip
+POST http://{{host}}/trips
+Content-Type: {{contentType}}
+
+{
+  "destination": "Toronto",
+  "startsAt": "2025-01-01",
+  "endsAt": "2026-01-01",
+  "ownerName": "Guilherme Crozariol",
+  "ownerEmail": "guicrozariol@gmail.com",
+  "emailsToInvite": [
+    "john.doe@example.com",
+    "jane.smith@example.net",
+    "sam.wilson@example.org",
+    "linda.brown@example.edu",
+    "michael.jones@example.co",
+    "emily.davis@example.io",
+    "chris.miller@example.biz",
+    "patricia.garcia@example.info",
+    "daniel.moore@example.tech",
+    "sarah.lee@example.dev"
+  ]
+}
+
+###
+
+# @name confirmTrip
+GET http://{{host}}/trips/{{tripId}}/confirm
+Content-Type: {{contentType}}
+
+###
+
+# @name confirmParticipant
+GET http://{{host}}/participants/{{participantId}}/confirm
+Content-Type: {{contentType}}
+
+###
+
+# @name createActivity
+POST http://{{host}}/trips/{{tripId}}/activities
+Content-Type: {{contentType}}
+
+{
+  "title": "CN Tower",
+  "occursAt": "2025-01-02"
+}
+
+###
+
+# @name getActivities
+GET http://{{host}}/trips/{{tripId}}/activities
+Content-Type: {{contentType}}
+
+###
+
+# @name createLink
+POST http://{{host}}/trips/{{tripId}}/links
+Content-Type: {{contentType}}
+
+{
+  "title": "CN Tower",
+  "url": "https://google.com/"
+}
+
+###
+
+# @name getLinks
+GET http://{{host}}/trips/{{tripId}}/links
+Content-Type: {{contentType}}
+
+###
+
+# @name getParticipant
+GET http://{{host}}/participants/{{participantId}}
+Content-Type: {{contentType}}
+
+###
+
+# @name getParticipants
+GET http://{{host}}/trips/{{tripId}}/participants
+Content-Type: {{contentType}}
+
+###
+
+# @name createInvite
+POST http://{{host}}/trips/{{tripId}}/invites
+Content-Type: {{contentType}}
+
+{
+  "email": "guicrozariol@gmail.com"
+}
+
+###
+
+# @name updateTrip
+PUT http://{{host}}/trips/{{tripId}}
+Content-Type: {{contentType}}
+
+{
+  "destination": "Toronto",
+  "startsAt": "2025-01-01",
+  "endsAt": "2026-01-01"
+}
+
+###
+
+# @name getTripDetails
+GET http://{{host}}/trips/{{tripId}}
+Content-Type: {{contentType}}
