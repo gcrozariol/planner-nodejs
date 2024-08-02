@@ -1,3 +1,4 @@
+import { env } from '@/env'
 import { ClientError } from '@/errors/client-error'
 import { getMailClient } from '@/lib/mail'
 import { prisma } from '@/lib/prisma'
@@ -43,7 +44,7 @@ export async function createInvite(app: FastifyInstance) {
       const formattedStartDate = dayjs(trip.startsAt).format('LL')
       const formattedEndDate = dayjs(trip.endsAt).format('LL')
 
-      const confirmationLink = `localhost:3333/trips/${trip.id}/confirm`
+      const confirmationLink = `${env.API_BASE_URL}/trips/${trip.id}/confirm`
 
       const mail = await getMailClient()
 
